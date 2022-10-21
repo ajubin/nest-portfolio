@@ -1,5 +1,22 @@
 {
   "$schema": "https://json.schemastore.org/nest-cli",
   "collection": "@nestjs/schematics",
-  "sourceRoot": "src"
+  "sourceRoot": "apps/nest-portfolio/src",
+  "monorepo": true,
+  "root": "apps/nest-portfolio",
+  "compilerOptions": {
+    "webpack": true,
+    "tsConfigPath": "apps/nest-portfolio/tsconfig.app.json"
+  },
+  "projects": {
+    "nest-portfolio": {
+      "type": "application",
+      "root": "apps/nest-portfolio",
+      "entryFile": "main",
+      "sourceRoot": "apps/nest-portfolio/src",
+      "compilerOptions": {
+        "tsConfigPath": "apps/nest-portfolio/tsconfig.app.json"
+      }
+    }
+  }
 }
