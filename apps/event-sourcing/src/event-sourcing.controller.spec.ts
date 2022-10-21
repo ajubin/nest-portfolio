@@ -11,7 +11,9 @@ describe('EventSourcingController', () => {
       providers: [EventSourcingService],
     }).compile();
 
-    eventSourcingController = app.get<EventSourcingController>(EventSourcingController);
+    eventSourcingController = app.get<EventSourcingController>(
+      EventSourcingController,
+    );
   });
 
   describe('root', () => {
