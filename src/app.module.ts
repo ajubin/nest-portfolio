@@ -1,10 +1,13 @@
 import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
-import { AppService } from './app.service';
+import { ChatModule } from './chat/chat.module';
+import { PostMessageService } from './chat/post-message/post-message.service';
+import { EnvironmentService } from './shared/environment/environment.service';
+import { SharedModule } from './shared/shared.module';
 
 @Module({
-  imports: [],
+  imports: [ChatModule, SharedModule],
   controllers: [AppController],
-  providers: [AppService],
+  providers: [PostMessageService, EnvironmentService],
 })
 export class AppModule {}
