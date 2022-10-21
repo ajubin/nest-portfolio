@@ -17,6 +17,15 @@
       "compilerOptions": {
         "tsConfigPath": "apps/nest-portfolio/tsconfig.app.json"
       }
+    },
+    "event-sourcing": {
+      "type": "application",
+      "root": "apps/event-sourcing",
+      "entryFile": "main",
+      "sourceRoot": "apps/event-sourcing/src",
+      "compilerOptions": {
+        "tsConfigPath": "apps/event-sourcing/tsconfig.app.json"
+      }
     }
   }
 }
