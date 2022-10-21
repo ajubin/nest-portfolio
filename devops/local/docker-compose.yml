@@ -1,0 +1,9 @@
+version: '3'
+services:
+  portfolio-database:
+    build: ./database
+    image: portfolio-database
+    container_name: portfolio-database
+    env_file: ./database/env.config
+    ports:
+      - 5433:5432
