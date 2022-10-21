@@ -1,14 +1,17 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { AppController } from './app.controller';
 import { AppModule } from './app.module';
+import { BetterEnvService } from './shared/better-env/better-env.service';
 import { EnvironmentService } from './shared/environment/environment.service';
 
 describe('AppController', () => {
   let appController: AppController;
-  let spy: any;
+  let spyBadEnv: any;
+  let spyBetterEnv: any;
 
   beforeEach(async () => {
-    spy = jest.spyOn(EnvironmentService.prototype, 'construct');
+    spyBadEnv = jest.spyOn(EnvironmentService.prototype, 'construct');
+    spyBetterEnv = jest.spyOn(BetterEnvService.prototype, 'construct');
     const app: TestingModule = await Test.createTestingModule({
       imports: [AppModule],
     }).compile();
@@ -16,12 +19,15 @@ describe('AppController', () => {
     appController = app.get<AppController>(AppController);
     const envService = app.get<EnvironmentService>(EnvironmentService);
     console.log(`EnvService used in test : ${envService.value}`);
+    const betterEnvService = app.get<BetterEnvService>(BetterEnvService);
+    console.log(`BetterEnvService used in test : ${betterEnvService.value}`);
   });
 
   describe('root', () => {
-    it('should return "Hello World!"', () => {
+    it('showcase bad dependcy injection', () => {
       appController.getHello();
-      expect(spy).toHaveBeenCalledTimes(3);
+      expect(spyBadEnv).toHaveBeenCalledTimes(3);
+      expect(spyBetterEnv).toHaveBeenCalledTimes(1);
     });
   });
 });
