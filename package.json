@@ -65,6 +65,10 @@
     "collectCoverageFrom": [
       "**/*.(t|j)s"
     ],
+    "moduleDirectories": [
+      "node_modules",
+      "src"
+    ],
     "coverageDirectory": "../coverage",
     "testEnvironment": "node"
   }
