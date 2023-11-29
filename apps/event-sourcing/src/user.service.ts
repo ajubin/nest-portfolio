@@ -9,6 +9,17 @@ export class UserService {
   async user(
     userWhereUniqueInput: Prisma.UserWhereUniqueInput,
   ): Promise<User | null> {
+    this.prisma.user.create({
+      data: {
+        email: 'email',
+        profile: {
+          create: {
+            bio: 'super profile',
+            id: 'id',
+          },
+        },
+      },
+    });
     return this.prisma.user.findUnique({
       where: userWhereUniqueInput,
     });
